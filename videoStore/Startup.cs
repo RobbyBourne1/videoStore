@@ -11,7 +11,6 @@ namespace videoStore
 {
     public class Startup
     {
-        services.AddDBContext<VideoDBContext>();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,7 +23,6 @@ namespace videoStore
         {
             services.AddMvc();
             services.AddDbContext<DataContext.VideoDBContext>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace videoStore.Models
 {
     public class RentalRecordModel
     {
+        [Key]
         public int RentalID { get; set; }
 
         [ForeignKey ("MovieID")]
@@ -20,7 +22,7 @@ namespace videoStore.Models
         [ForeignKey ("CustomerID")]
         public int CustomerID { get; set; }
         public CustomerModel CustomerModel { get; set; }
-        
+
         public DateTime RentalDate { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime ReturnDate { get; set; }

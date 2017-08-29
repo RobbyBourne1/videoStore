@@ -10,5 +10,9 @@ namespace videoStore.Models
 {
     public class MovieModel
     {
+        public int MovieID { get; set; }
+        public string MovieName { get; set; }
+        public string MovieDescription { get; set; }
+        public string Genre { get; set; }
     }
 }

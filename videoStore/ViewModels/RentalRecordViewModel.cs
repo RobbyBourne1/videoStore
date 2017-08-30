@@ -7,7 +7,8 @@ using videoStore.DataContext;
 namespace videoStore.Models
 {
     public class RentalRecordViewModel
-    {
+    {   
+        public int RentalRecordID { get; set; }
         public  int MoviesID { get; set; }
         public string MovieName { get; set; }
         public DateTime RentalDate { get; set; } = DateTime.Now;
@@ -24,6 +25,7 @@ namespace videoStore.Models
 
         public RentalRecordViewModel(RentalRecordModel record)
         {
+           this.RentalRecordID = record.RentalID;
            this.MoviesID = record.MovieID;
            this.MovieName = record.MovieModel.MovieName;
            this.RentalDate = record.RentalDate;

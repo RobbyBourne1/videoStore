@@ -23,7 +23,7 @@ namespace videoStore
             return CurrentMovies.Include(i => i.GenreModel).Select(s => new MovieViewModel(s));
         }
 
-        public RentalRecordViewModel GetRentalRecord()
+        public CreateRecordViewModel CreateRentalRecord()
         {
             var customerInfo = _context.Customers;
             var movieInfo = _context.Movies;
@@ -34,6 +34,12 @@ namespace videoStore
             };
 
             return newRecord;
+        }
+
+        public IEnumerable<RentalRecordViewModel> GetAllRentalRecords()
+        {
+            var RentalRecord = _context.RentalRecords;
+            return RentalRecord.Include(i => i.MovieModel).Include(i => i.CustomerModel).Select(s => new RentalRecordViewModel(s));
         }
     }
 }

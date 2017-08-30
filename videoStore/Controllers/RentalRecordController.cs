@@ -19,12 +19,13 @@ namespace videoStore.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var service = new MovieService(_context); 
+            return View(service.GetAllRentalRecords());
         }
         public IActionResult Create()
         {   
             var movieForm = new MovieService(_context);
-            return View(movieForm.GetRentalRecord());
+            return View(movieForm.CreateRentalRecord());
         }
 
         [HttpPost]

@@ -1,20 +1,25 @@
 @model RentalRecordViewModel
 
-<form>
-    <p>Movie ID</p>
-    <select name="Movie">
+<form asp-controller="RentalRecord" asp-action="CreateRecord">
+    <label>Movie ID</label><select name="movie">
 @foreach(var item in Model.Movies)
 {
-<option value="@item.MovieName">@item.MovieName</option>
+<option value="@item.MovieID">@item.MovieName</option>
 }
     </select>
-    <p>Customer ID</p>
-    <select name="Movie">
+    
+    <label>Customer ID</label><select name="customer">
 @foreach(var item in Model.Customers)
 {
-    <option value="@item.CustomerName">@item.CustomerName</option>
+    <option value="@item.CustomerID">@item.CustomerName</option>
 }
     </select>
-<h1>@Model.RentalDate</h1>
-<h1>@Model.DueDate</h1>
+<h4>Rental Date</h4>
+<input type="hidden" name="rentaldate" value="@Model.RentalDate"></input>
+<p>@Model.RentalDate</p>
+<h4>Due Date</h4>
+<input type="hidden" name="duedate" value="@Model.DueDate"></input>
+<p>@Model.DueDate</p>
+<button type="submit">Check Out Movie</button>
 </form>
+

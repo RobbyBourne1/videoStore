@@ -27,6 +27,21 @@ namespace videoStore.Controllers
             var movieForm = new MovieService(_context);
             return View(movieForm.GetRentalRecord());
         }
+
+        [HttpPost]
+        public IActionResult CreateRecord(int movie, int customer, DateTime rentaldate, DateTime duedate)
+        {
+            var newRecord = new RentalRecordModel
+            {
+                MovieID = movie,
+                CustomerID = customer,
+                RentalDate = rentaldate,
+                DueDate = duedate
+            };
+            _context.RentalRecords.Add(newRecord);
+            _context.SaveChanges();
+            return Redirect("Index");
+        }
         public IActionResult Delete()
         {
             return View();

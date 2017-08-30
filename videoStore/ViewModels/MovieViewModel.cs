@@ -1,12 +1,26 @@
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using videoStore.DataContext;
 
 namespace videoStore.Models
 {
     public class MovieViewModel
     {
-      public List<GenreModel> GenreModel { get; set; }
-      public List<MovieModel> MovieModel { get; set; }
-    }
+      public string MovieName { get; set; }
+      public string MovieDescription { get; set; } 
+      public string GenreName { get; set; }   
 
-    
+      public MovieViewModel()
+      {
+      }
+
+      public MovieViewModel(MovieModel movie)
+      {
+          this.MovieName = movie.MovieName;
+          this.MovieDescription = movie.MovieDescription;
+          this.GenreName = movie.GenreModel?.GenreName;
+        
+      }
+    }
 }

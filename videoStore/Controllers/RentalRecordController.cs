@@ -19,8 +19,8 @@ namespace videoStore.Controllers
         }
         public IActionResult Index()
         {
-            var CurrentMovies = _context.Movies.ToList();
-            return View(CurrentMovies);
+            var service = new MovieService(_context); 
+            return View(service.GetAllMovies());
         }
         public IActionResult Create()
         {

@@ -1,8 +1,7 @@
+@model IEnumerable<MovieViewModel>
 @{
     ViewData["Title"] = "Rental Records Page";
 }
-
-@model List<MovieModel>
 
 <h1>@ViewData["Title"]</h1>
 
@@ -10,4 +9,6 @@
 {
     <p>@item.MovieName</p>
     <p>@item.MovieDescription</p>
+    <p>@item.GenreName</p>
+
 }

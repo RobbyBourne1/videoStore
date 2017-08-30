@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Rental Records Page";
+}
+
+@model List<MovieModel>
+
+<h1>@ViewData["Title"]</h1>
+
+@foreach(var item in Model)
+{
+    <p>@item.MovieName</p>
+    <p>@item.MovieDescription</p>
+}

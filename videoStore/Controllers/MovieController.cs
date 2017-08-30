@@ -4,15 +4,23 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using videoStore.DataContext;
 using videoStore.Models;
 
 namespace videoStore.Controllers
 {
-    public class MoviesController : Controller
-    {
+    public class MovieController : Controller
+    {   
+        private readonly VideoDBContext _context;
+
+        public MovieController(VideoDBContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View();
+            var service = new MovieService(_context); 
+            return View(service.GetAllMovies());
         }
         public IActionResult Create()
         {

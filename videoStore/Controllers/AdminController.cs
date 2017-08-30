@@ -10,5 +10,6 @@ namespace videoStore.Controllers
 {
     public class AdminController : Controller
     {
+    
     }
 }

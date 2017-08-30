@@ -22,74 +22,82 @@ namespace videoStore.Controllers
         {
             return View();
         }
-
-        public IActionResult Seed()
+        public IActionResult Return()
         {
-            var seedGenre = new List<GenreModel>()
-        {
-            new GenreModel
-            {
-                GenreName = "Horror"
-            },
-             new GenreModel
-            {
-                GenreName = "Comedy"
-            },
-             new GenreModel
-            {
-                GenreName = "Action"
-            }
-        };
-
-            seedGenre.ForEach(genre => _context.Genres.Add(genre));
-
-            var seedMovies = new List<MovieModel>()
-            {
-                new MovieModel
-                {
-                MovieName = "John Wick",
-                MovieDescription = "Shootem Bang Bang",
-                GenreID = 3
-                },
-                new MovieModel
-                {
-                MovieName = "SuperBad",
-                MovieDescription = "Laugh Haha",
-                GenreID = 2
-                },
-                new MovieModel
-                {
-                MovieName = "Evil Dead",
-                MovieDescription = "Scary Run scared",
-                GenreID = 1
-                }
-            };
-            seedMovies.ForEach(vid => _context.Movies.Add(vid));
-            
-            var seedCustomers = new List<CustomerModel>()
-            {
-                new CustomerModel
-                {
-                    CustomerName = "Robby",
-                    CustomerPhoneNumber = "8675309"
-                },
-                new CustomerModel
-                {
-                    CustomerName = "Yana",
-                    CustomerPhoneNumber = "1234567"
-                },
-                new CustomerModel
-                {
-                    CustomerName = "Jeremiah",
-                    CustomerPhoneNumber = "9876543"
-                },
-            };
-            seedCustomers.ForEach(person => _context.Customers.Add(person));
-
-            _context.SaveChanges();
-
-            return Ok();
+            return View();
         }
+        public IActionResult Overdue()
+        {
+            return View();
+        }
+
+        // public IActionResult Seed()
+        // {
+        //     var seedGenre = new List<GenreModel>()
+        // {
+        //     new GenreModel
+        //     {
+        //         GenreName = "Horror"
+        //     },
+        //      new GenreModel
+        //     {
+        //         GenreName = "Comedy"
+        //     },
+        //      new GenreModel
+        //     {
+        //         GenreName = "Action"
+        //     }
+        // };
+
+        //     seedGenre.ForEach(genre => _context.Genres.Add(genre));
+
+        //     var seedMovies = new List<MovieModel>()
+        //     {
+        //         new MovieModel
+        //         {
+        //         MovieName = "John Wick",
+        //         MovieDescription = "Shootem Bang Bang",
+        //         GenreID = 3
+        //         },
+        //         new MovieModel
+        //         {
+        //         MovieName = "SuperBad",
+        //         MovieDescription = "Laugh Haha",
+        //         GenreID = 2
+        //         },
+        //         new MovieModel
+        //         {
+        //         MovieName = "Evil Dead",
+        //         MovieDescription = "Scary Run scared",
+        //         GenreID = 1
+        //         }
+        //     };
+        //     seedMovies.ForEach(vid => _context.Movies.Add(vid));
+            
+        //     var seedCustomers = new List<CustomerModel>()
+        //     {
+        //         new CustomerModel
+        //         {
+        //             CustomerName = "Robby",
+        //             CustomerPhoneNumber = "8675309"
+        //         },
+        //         new CustomerModel
+        //         {
+        //             CustomerName = "Yana",
+        //             CustomerPhoneNumber = "1234567"
+        //         },
+        //         new CustomerModel
+        //         {
+        //             CustomerName = "Jeremiah",
+        //             CustomerPhoneNumber = "9876543"
+        //         },
+        //     };
+        //     seedCustomers.ForEach(person => _context.Customers.Add(person));
+
+        //     _context.SaveChanges();
+
+        //     return Ok();
+        // }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

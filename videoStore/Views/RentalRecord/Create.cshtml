@@ -1,0 +1,20 @@
+@model RentalRecordViewModel
+
+<form>
+    <p>Movie ID</p>
+    <select name="Movie">
+@foreach(var item in Model.Movies)
+{
+<option value="@item.MovieName">@item.MovieName</option>
+}
+    </select>
+    <p>Customer ID</p>
+    <select name="Movie">
+@foreach(var item in Model.Customers)
+{
+    <option value="@item.CustomerName">@item.CustomerName</option>
+}
+    </select>
+<h1>@Model.RentalDate</h1>
+<h1>@Model.DueDate</h1>
+</form>

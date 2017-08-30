@@ -23,8 +23,9 @@ namespace videoStore.Controllers
             return View(service.GetAllMovies());
         }
         public IActionResult Create()
-        {
-            return View();
+        {   
+            var movieForm = new MovieService(_context);
+            return View(movieForm.GetRentalRecord());
         }
         public IActionResult Delete()
         {

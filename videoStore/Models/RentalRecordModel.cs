@@ -27,9 +27,5 @@ namespace videoStore.Models
         public DateTime DueDate { get; set; } 
         public DateTime ReturnDate { get; set; }
 
-        public void Rented()
-        {
-            DueDate = RentalDate.AddDays(5);
-        }
     }
 }

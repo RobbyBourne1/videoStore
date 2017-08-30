@@ -9,7 +9,8 @@ namespace videoStore.Models
     {
       public string MovieName { get; set; }
       public string MovieDescription { get; set; } 
-      public string GenreName { get; set; }   
+      public string GenreName { get; set; } 
+      public int MovieID { get; set;}  
 
       public MovieViewModel()
       {
@@ -20,7 +21,6 @@ namespace videoStore.Models
           this.MovieName = movie.MovieName;
           this.MovieDescription = movie.MovieDescription;
           this.GenreName = movie.GenreModel?.GenreName;
-        
       }
     }
 }

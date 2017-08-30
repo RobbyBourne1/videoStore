@@ -22,5 +22,18 @@ namespace videoStore
             var CurrentMovies = _context.Movies;
             return CurrentMovies.Include(i => i.GenreModel).Select(s => new MovieViewModel(s));
         }
+
+        public RentalRecordViewModel GetRentalRecord()
+        {
+            var customerInfo = _context.Customers;
+            var movieInfo = _context.Movies;
+            var newRecord = new RentalRecordViewModel
+            {
+                Customers = customerInfo.ToList(),
+                Movies = movieInfo.ToList(),
+            };
+
+            return newRecord;
+        }
     }
 }

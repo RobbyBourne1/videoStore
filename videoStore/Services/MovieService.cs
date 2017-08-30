@@ -27,7 +27,7 @@ namespace videoStore
         {
             var customerInfo = _context.Customers;
             var movieInfo = _context.Movies;
-            var newRecord = new RentalRecordViewModel
+            var newRecord = new CreateRecordViewModel
             {
                 Customers = customerInfo.ToList(),
                 Movies = movieInfo.ToList(),

@@ -1,30 +1,79 @@
-@model IEnumerable<RentalRecordViewModel>
+@model IEnumerable<videoStore.Models.RentalRecordViewModel>
 
-@{
-    ViewData["Title"] = "Rental Records";
-}
 
-<h1>@ViewData["Title"]</h1>
-<table>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
-    <tr>
-        <th>Rental ID</th>
-        <th>Rental Date</th>
-        <th>Rental Due Date</th>
-        <th>Rental Return Date</th>
-        <th>Movie Name</th>
-        <th>Movie ID</th>
-        <th>Customer Name</th>
-        <th>Customer ID</th>
-        
-        <th>Customer Phone Number</th>
-    </tr>
-    </thead>
-    @foreach(var item in Model)
-    {
         <tr>
-            <td>@item.RentalRecordID</td><td>@item.RentalDate</td><td>@item.DueDate</td><td>@item.ReturnDate</td><td>@item.MovieName</td><td>@item.MoviesID</td><td>@item.CustomerName</td><td>@item.CustomerID</td><td>@item.CustomerPhoneNumber</td>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalRecordID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MoviesID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReturnDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerPhoneNumber)
+                </th>
+            <th></th>
         </tr>
-        <br>
-    }
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalRecordID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoviesID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPhoneNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RentalRecordID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RentalRecordID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RentalRecordID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
 </table>

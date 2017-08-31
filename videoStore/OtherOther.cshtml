@@ -1,11 +1,17 @@
 @model IEnumerable<videoStore.Models.MovieViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OtherOther</title>
+</head>
+<body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -20,6 +26,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.GenreName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieID)
                 </th>
             <th></th>
         </tr>
@@ -37,12 +46,16 @@
                 @Html.DisplayFor(modelItem => item.GenreName)
             </td>
             <td>
-                <a asp-controller="RentalRecord" asp-action="Create" asp-route-id="@item.MovieID">Rent</a> |
-                <a asp-action="Edit" asp-route-id="@item.MovieID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MovieID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MovieID">Delete</a>
+                @Html.DisplayFor(modelItem => item.MovieID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
     </tbody>
 </table>
+</body>
+</html>

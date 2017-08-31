@@ -28,7 +28,8 @@ namespace videoStore.Controllers
         }
         public IActionResult Overdue()
         {
-            return View();
+            var service = new MovieService(_context);
+            return View(service.GetOverdueRecords());
         }
 
         // public IActionResult Seed()

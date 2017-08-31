@@ -21,6 +21,7 @@ namespace videoStore.Models
           this.MovieName = movie.MovieName;
           this.MovieDescription = movie.MovieDescription;
           this.GenreName = movie.GenreModel?.GenreName;
+          this.MovieID = movie.MovieID;
       }
     }
 }

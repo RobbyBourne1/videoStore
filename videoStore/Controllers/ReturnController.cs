@@ -26,7 +26,7 @@ namespace videoStore.Controllers
             return View(service.GetAllRentalRecords());
         }
 
-        public async Task<IActionResult> Return(int? id)
+        public async Task<IActionResult> ReturnMovie(int? id)
         {
             if (id == null)
             {
@@ -48,7 +48,7 @@ namespace videoStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RentalID,MovieID,CustomerID,RentalDate,DueDate,ReturnDate")] RentalRecordModel rentalRecordModel)
+        public async Task<IActionResult> ReturnMovie(int id, [Bind("RentalID,MovieID,CustomerID,RentalDate,DueDate,ReturnDate")] RentalRecordModel rentalRecordModel)
         {
             if (id != rentalRecordModel.RentalID)
             {
@@ -83,6 +83,11 @@ namespace videoStore.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private bool RentalRecordModelExists(int id)
+        {
+            return _context.RentalRecords.Any(e => e.RentalID == id);
         }
     }
 }

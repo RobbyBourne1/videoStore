@@ -39,7 +39,9 @@ namespace videoStore
         public IEnumerable<RentalRecordViewModel> GetAllRentalRecords()
         {
             var RentalRecord = _context.RentalRecords;
-            return RentalRecord.Include(i => i.MovieModel).Include(i => i.CustomerModel).Select(s => new RentalRecordViewModel(s));
+            return RentalRecord.Include(i => i.MovieModel)
+            .Include(i => i.CustomerModel)
+            .Select(s => new RentalRecordViewModel(s));
         }
 
         public IEnumerable<RentalRecordViewModel> GetOverdueRecords()
@@ -48,7 +50,20 @@ namespace videoStore
             var movieInfo = _context.Movies;
             var allRecords = _context.RentalRecords;
             var today = DateTime.Today;
-            return allRecords.Where(t => t.DueDate.CompareTo(today)<0).Include(m => m.MovieModel).Include(c => c.CustomerModel).Select(s => new RentalRecordViewModel(s));
+
+            return allRecords.Where(a => a.ReturnDate == default(DateTime))
+            .Where(t => t.DueDate.CompareTo(today)<0)
+            .Include(m => m.MovieModel)
+            .Include(c => c.CustomerModel)
+            .Select(s => new RentalRecordViewModel(s));
+        }
+
+        public IEnumerable<RentalRecordViewModel> GetCheckedOutRecords()
+        {
+            var RentalRecord = _context.RentalRecords;
+            return RentalRecord.Include(i => i.MovieModel)
+            .Include(i => i.CustomerModel).Where(w => w.ReturnDate == default(DateTime))
+            .Select(s => new RentalRecordViewModel(s));
         }
     }
 }

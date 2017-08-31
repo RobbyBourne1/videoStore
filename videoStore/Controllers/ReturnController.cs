@@ -23,7 +23,7 @@ namespace videoStore.Controllers
         public IActionResult Index()
         {
             var service = new MovieService(_context);
-            return View(service.GetAllRentalRecords());
+            return View(service.GetCheckedOutRecords());
         }
 
         public async Task<IActionResult> ReturnMovie(int? id)
@@ -38,9 +38,9 @@ namespace videoStore.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", rentalRecordModel.CustomerID);
-            ViewData["MovieID"] = new SelectList(_context.Movies, "MovieID", "MovieID", rentalRecordModel.MovieID);
-            return View(rentalRecordModel);
+            rentalRecordModel.ReturnDate = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Return");
         }
 
         // POST: RentalRecord/Edit/5

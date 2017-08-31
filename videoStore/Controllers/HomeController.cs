@@ -22,10 +22,6 @@ namespace videoStore.Controllers
         {
             return View();
         }
-        public IActionResult Return()
-        {
-            return View();
-        }
         public IActionResult Overdue()
         {
             var service = new MovieService(_context);
